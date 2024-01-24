@@ -13,6 +13,7 @@ public:
     void disconnect();
     QAbstractSocket::SocketState state();
     bool isConnected();
+    void send(QString message);
 signals:
     void connected();
     void disconnected();

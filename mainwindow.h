@@ -29,6 +29,8 @@ private slots:
     void device_error(QAbstractSocket::SocketError socketError);
     void device_dataReady(QByteArray);
 
+    void on_btnSend_clicked();
+
 private:
     Ui::MainWindow *ui;
     DeviceController _controller;

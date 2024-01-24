@@ -48,12 +48,14 @@ void MainWindow::device_connected()
 {
     ui->console->addItem("Connect to Device");
     ui->btnConnect->setText("Disconnect");
+    ui->groupBox_send->setEnabled(true);
 }
 
 void MainWindow::device_disconnected()
 {
     ui->console->addItem("Disconnect from Device");
     ui->btnConnect->setText("Connect");
+    ui->groupBox_send->setEnabled(false);
 }
 
 void MainWindow::device_stateChanged(QAbstractSocket::SocketState state)
@@ -79,6 +81,12 @@ void MainWindow::setDeviceController()
     connect(&_controller, &DeviceController::stateChanged, this, &MainWindow::device_stateChanged);
     connect(&_controller, &DeviceController::error, this, &MainWindow::device_error);
     connect(&_controller, &DeviceController::dataReady, this, &MainWindow::device_dataReady);
+}
+
+void MainWindow::on_btnSend_clicked()
+{
+    auto message = ui->message->text().trimmed();
+    _controller.send(message);
 }
 
 
