@@ -6,6 +6,7 @@ DeviceController::DeviceController(QObject *parent) : QObject(parent)
   connect(&_socket, &QTcpSocket::disconnected, this, &DeviceController::disconnected);
   connect(&_socket, &QTcpSocket::stateChanged, this, &DeviceController::socket_stateChanged);
   connect(&_socket, QOverload<QAbstractSocket::SocketError>::of(&QAbstractSocket::error), this, &DeviceController::error);
+  connect(&_socket, &QTcpSocket::readyRead, this, &DeviceController::socket_readyRead);
 }
 
 void DeviceController::connectToDevice(QString ip, int port)
@@ -42,4 +43,10 @@ void DeviceController::socket_stateChanged(QAbstractSocket::SocketState state)
         _socket.close();
     }
     emit stateChanged(state);
+}
+
+void DeviceController::socket_readyRead()
+{
+    auto data = _socket.readAll();
+    emit dataReady(data);
 }

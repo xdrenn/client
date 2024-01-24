@@ -109,15 +109,27 @@ background-color: rgb(0, 170, 0);
      </property>
     </widget>
    </widget>
-   <widget class="QListWidget" name="console">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>50</y>
-      <width>181</width>
-      <height>301</height>
+      <x>360</x>
+      <y>40</y>
+      <width>258</width>
+      <height>291</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QListWidget" name="console"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -133,5 +145,22 @@ background-color: rgb(0, 170, 0);
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>console</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>462</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>471</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -27,6 +27,7 @@ private slots:
     void device_disconnected();
     void device_stateChanged(QAbstractSocket::SocketState);
     void device_error(QAbstractSocket::SocketError socketError);
+    void device_dataReady(QByteArray);
 
 private:
     Ui::MainWindow *ui;

@@ -18,8 +18,10 @@ signals:
     void disconnected();
     void stateChanged(QAbstractSocket::SocketState);
     void error(QAbstractSocket::SocketError socketError);
+    void dataReady(QByteArray);
 private slots:
     void socket_stateChanged(QAbstractSocket::SocketState state);
+    void socket_readyRead();
 private:
     QTcpSocket _socket;
     QString _ip;

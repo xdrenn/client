@@ -67,12 +67,18 @@ void MainWindow::device_error(QAbstractSocket::SocketError socketError)
     ui->console->addItem(metaEnum.valueToKey(socketError));
 }
 
+void MainWindow::device_dataReady(QByteArray data)
+{
+    ui->console->addItem(QString(data));
+}
+
 void MainWindow::setDeviceController()
 {
     connect(&_controller, &DeviceController::connected, this, &MainWindow::device_connected);
     connect(&_controller, &DeviceController::disconnected, this, &MainWindow::device_disconnected);
     connect(&_controller, &DeviceController::stateChanged, this, &MainWindow::device_stateChanged);
     connect(&_controller, &DeviceController::error, this, &MainWindow::device_error);
+    connect(&_controller, &DeviceController::dataReady, this, &MainWindow::device_dataReady);
 }
 
 
