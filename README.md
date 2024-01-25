@@ -1,1 +1,2 @@
-<img src="screenshots/Screenshot.PNG" width="500" height="300"/>
+# Screenshots
+<img src="screenshots/Screenshot.PNG" width="608" height="376"/>
